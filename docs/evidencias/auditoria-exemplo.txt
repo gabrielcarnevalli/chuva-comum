@@ -1,0 +1,13 @@
+Trecho real da validação da interface azul e roxa; horários em UTC.
+2026-11-10T12:10:44Z {"acao": "list_occurrences", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:10:44Z {"acao": "list_occurrences", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:10:45Z {"acao": "get_weather", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:10:46Z {"acao": "list_occurrences", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:10:46Z {"acao": "list_occurrences", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:10:46Z {"acao": "list_occurrences", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:10:46Z {"acao": "list_occurrences", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:10:47Z {"acao": "list_occurrences", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:10:47Z {"acao": "list_occurrences", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:10:47Z {"acao": "list_occurrences", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:10:47Z {"acao": "list_occurrences", "resultado": 200, "metodo": "GET"}
+2026-11-10T12:11:34Z {"acao": "get_weather", "resultado": 200, "metodo": "GET"}

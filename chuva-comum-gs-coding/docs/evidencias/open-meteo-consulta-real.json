@@ -1,0 +1,16 @@
+{
+  "observacao": "Consulta real realizada após a atualização para azul e roxo. Fotografia datada, não previsão para dias futuros de avaliação.",
+  "http_status": 200,
+  "resposta": {
+    "dados": {
+      "aviso": "Previsão municipal. Não prevê alagamentos nem substitui alertas oficiais.",
+      "cache": true,
+      "cidade": "sao-paulo",
+      "consultado_em": "2026-11-10T12:10:40.477200+00:00",
+      "data": "2026-11-10",
+      "fonte": "Open-Meteo",
+      "precipitacao_mm": 0.2,
+      "probabilidade_chuva": 24
+    }
+  }
+}

@@ -1,0 +1,6 @@
+GET → 200, listagem com paginação
+POST → 201, id=18, Location presente
+PUT → 200, status atualizado
+DELETE → 204, corpo vazio
+POST sem credencial → 401
+Entrada maliciosa → 400

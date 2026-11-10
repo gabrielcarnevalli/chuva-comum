@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mysql:8.4.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Gere o arquivo .env}
+      MYSQL_DATABASE: chuva_comum
+      MYSQL_USER: chuva_app
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Gere o arquivo .env}
+    ports:
+      - "127.0.0.1:3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$$MYSQL_PASSWORD\" mysql --protocol=TCP -h 127.0.0.1 -u chuva_app -D chuva_comum -e 'SELECT id FROM ocorrencias LIMIT 1' >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+volumes:
+  mysql_data:

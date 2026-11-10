@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Protótipo acadêmico de acompanhamento comunitário de alagamentos.">
+  <title>ChuvaComum · Cuidado que começa no bairro</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" id="brand-home" href="/" aria-label="ChuvaComum, início"><span class="brand-icon" aria-hidden="true">◒</span> chuva<span>comum</span><span class="brand-dot">.</span></a>
+    <nav aria-label="Principal"><a id="panel-nav" class="active" href="#painel">Painel comunitário</a><a id="about-nav" href="#sobre">Sobre o projeto <span aria-hidden="true">→</span></a><a id="secret-nav" href="#mensagem" aria-controls="secret-panel" hidden>Mensagem</a></nav>
+    <span class="demo-badge"><span aria-hidden="true">●</span> Demonstração acadêmica</span>
+  </header>
+  <main id="painel">
+    <div id="community-content">
+    <section class="hero">
+      <div class="hero-copy"><p class="eyebrow">CITIZENTECH / ODS 11 + 13</p><h1>Cuidar da cidade<br>começa no <em>bairro.</em></h1><p class="lead">Um espaço comum para acompanhar alagamentos, identificar problemas e dar visibilidade ao que precisa de cuidado.</p><div class="hero-bottom"><span class="little-line"></span><span>Informação compartilhada. Comunidade mais preparada.</span></div></div>
+      <div class="hero-art" aria-hidden="true"><div class="art-grid"></div><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-drop"></div><div class="art-pin pin-one">+</div><div class="art-pin pin-two">+</div><div class="art-label">O CUIDADO É COLETIVO</div><div class="art-coordinate">23°33′ S &nbsp; 46°38′ O</div><span class="art-sun"></span></div>
+    </section>
+    <div class="notice"><span class="notice-icon" aria-hidden="true">i</span><p><strong>Dados fictícios, propósito real.</strong> As ocorrências e os setores são simulados. A previsão é municipal e não indica risco de enchente. Em emergência, procure os canais oficiais: Defesa Civil 199 ou Bombeiros 193.</p></div>
+    <section class="workspace" aria-labelledby="workspace-title">
+      <div class="section-heading"><div><p class="eyebrow">UM OLHAR PARA O TERRITÓRIO</p><h2 id="workspace-title">Painel comunitário</h2></div><label class="city-picker" for="city">Município <select id="city"><option value="sao-paulo">São Paulo · SP</option><option value="porto-alegre">Porto Alegre · RS</option><option value="recife">Recife · PE</option></select></label></div>
+      <div class="overview">
+        <div class="stat-card"><span class="stat-label">Registros no município</span><strong id="count-all">—</strong><span class="stat-foot">Todos os status</span></div>
+        <div class="stat-card"><span class="stat-label"><span class="status-dot status-open"></span> Abertas</span><strong id="count-open">—</strong><span class="stat-foot">Aguardando acompanhamento</span></div>
+        <div class="stat-card"><span class="stat-label"><span class="status-dot status-resolved"></span> Resolvidas</span><strong id="count-done">—</strong><span class="stat-foot">Ciclo de cuidado concluído</span></div>
+        <div class="weather-card"><div class="weather-top"><span>PREVISÃO DE HOJE</span><span aria-hidden="true">☂</span></div><p id="weather-main">Consultando previsão…</p><p id="weather-detail">Open-Meteo · informação municipal</p><button id="retry-weather" class="text-button" type="button" hidden>Tentar novamente</button><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Fonte: Open-Meteo (CC BY 4.0) →</a></div>
+      </div>
+      <div class="board-layout">
+        <section class="records-panel" aria-labelledby="records-title"><div class="panel-heading"><h3 id="records-title">Ocorrências da comunidade</h3><button id="refresh" class="icon-button" type="button">↻ Atualizar</button></div><div class="filter-row"><label for="status-filter">Mostrar <select id="status-filter"><option value="">Todos os status</option><option value="aberta">Abertas</option><option value="em_analise">Em análise</option><option value="resolvida">Resolvidas</option></select></label><span>SETORES ILUSTRATIVOS</span></div><p id="list-message" role="status" aria-live="polite">Carregando ocorrências…</p><div id="records"></div><div class="pagination"><button id="previous" type="button" class="secondary" disabled>← Anterior</button><span id="page-label">Página 1</span><button id="next" type="button" class="secondary" disabled>Próxima →</button></div></section>
+        <aside class="form-panel" aria-labelledby="form-title"><div class="form-kicker"><span aria-hidden="true">+</span> PARTICIPE DO CUIDADO</div><h3 id="form-title">Registrar ocorrência</h3><p class="form-intro">Simule um registro para acompanhar um problema da região.</p><form id="occurrence-form"><input type="hidden" id="edit-id"><label for="sector">Região ilustrativa<select id="sector" required><option value="Setor Norte">Setor Norte</option><option value="Setor Central">Setor Central</option><option value="Setor Sul">Setor Sul</option></select></label><label for="type">O que precisa de cuidado?<select id="type" required><option value="alagamento">Alagamento</option><option value="bueiro_obstruido">Bueiro obstruído</option><option value="via_interditada">Via interditada</option></select></label><div class="form-row"><label for="severity">Gravidade<select id="severity" required><option value="baixa">Baixa</option><option value="media">Média</option><option value="alta">Alta</option></select></label><label for="record-status">Status<select id="record-status" required><option value="aberta">Aberta</option><option value="em_analise">Em análise</option><option value="resolvida">Resolvida</option></select></label></div><label for="admin-token">Chave de edição <span class="optional">· acesso local</span><input id="admin-token" type="password" minlength="32" maxlength="256" autocomplete="off" placeholder="Informe a chave da demonstração"></label><p class="field-help">Use ADMIN_TOKEN do seu arquivo .env. A chave permanece apenas na memória desta página.</p><button class="primary" id="submit-button" type="submit">Registrar ocorrência <span aria-hidden="true">→</span></button><button class="secondary full" id="cancel-edit" type="button" hidden>Cancelar edição</button><p id="form-message" role="status" aria-live="polite"></p><p class="privacy-note"><span aria-hidden="true">◇</span> Sem nome, CPF, telefone ou localização exata. Apenas o necessário para a demonstração.</p></form></aside>
+      </div>
+    </section>
+    <section id="sobre" class="about"><div><p class="eyebrow">TECNOLOGIA A SERVIÇO DAS PESSOAS</p><h2>Pequenos registros.<br>Uma visão compartilhada.</h2></div><div><p>O ChuvaComum conecta registros comunitários e informação meteorológica em um painel simples. Foi inspirado na zeladoria colaborativa proposta pelo Experience FIAP CitizenTech.</p><p>É um protótipo educacional. Não envia equipes, não confirma ocorrências e não substitui a Defesa Civil. A utilidade para moradores ainda precisa ser validada em campo.</p><div class="ods-tags"><span>11 · Cidades e comunidades sustentáveis</span><span>13 · Ação climática</span></div></div></section>
+    </div>
+    <section id="secret-panel" class="secret-panel" aria-labelledby="secret-title" hidden>
+      <div class="secret-card">
+        <img class="secret-mark" src="{{ url_for('static', filename='favicon.svg') }}" width="48" height="48" alt="">
+        <p class="eyebrow">UMA PAUSA NO CAMINHO</p>
+        <h2 id="secret-title" tabindex="-1">Uma mensagem para você</h2>
+        <blockquote><p>Jesus Cristo é o mesmo ontem, hoje e eternamente.</p><cite>Hebreus 13:8</cite></blockquote>
+        <button id="close-secret" class="primary" type="button">Voltar ao painel <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+  </main>
+  <footer><a class="brand" href="/">chuva<span>comum</span>.</a><p>Feito para aprender. Pensado para cuidar.</p><span>GLOBAL SOLUTION · CODING FOR SECURITY</span></footer>
+  <dialog id="delete-dialog"><h3>Excluir esta ocorrência?</h3><p>O registro será removido da demonstração. Essa ação não pode ser desfeita.</p><div class="dialog-actions"><button class="secondary" id="cancel-delete" type="button">Cancelar</button><button class="danger" id="confirm-delete" type="button">Excluir registro</button></div></dialog>
+</body>
+</html>

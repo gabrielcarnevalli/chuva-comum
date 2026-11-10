@@ -1,0 +1,16 @@
+{
+  "crud_real_no_navegador": "aprovado",
+  "filtro_e_estado_vazio": "aprovado",
+  "previsao_indisponivel_simulada": "aprovado",
+  "erros_javascript": [],
+  "desktop_sem_overflow": true,
+  "mobile_sem_overflow": true,
+  "paleta": "azul e roxo",
+  "cores_observadas": {
+    "destaque": "rgb(124, 58, 237)",
+    "botao": "linear-gradient(110deg, rgb(37, 99, 235), rgb(124, 58, 237))",
+    "resolvida": "rgb(37, 99, 235)"
+  },
+  "aba_hebreus_13_8_teclado_desktop_mobile": "aprovado",
+  "executado_em_utc": "2026-11-10T12:15:50.534126+00:00"
+}
